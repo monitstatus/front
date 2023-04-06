@@ -1,0 +1,20 @@
+.tabber {
+  border-bottom: 1px solid rgba(29,28,29,.1);
+  margin-bottom: 1rem;
+}
+.tabSelector {
+  border-bottom: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  color: rgba(0,122,90,.6);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.tabSelector:hover {
+  border-bottom-color: #007a5a;
+  color: #007a5a;
+}
+.active {
+  border-bottom-color: #007a5a;
+  color: #007a5a;
+}
