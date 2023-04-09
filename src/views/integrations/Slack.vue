@@ -43,28 +43,23 @@ export default {
       .then((response) => response.data)
       .then((data) => {
         this.isLoading = false
-        if (!data.ok) {
-          console.log("Seems that data is not ok, but why?", data)
-          this.error = data.error
-        } else {
-          console.log("Slack oauth flow success", data)
-          let integration = {
-            kind: 'slack',
-            slack_bot_token: data.access_token,
-            slack_incoming_webhook: data.incoming_webhook.url,
-            slack_channel: data.incoming_webhook.channel,
-            slack_team_name: data.team.name,
-          }
-          integrationApi.createIntegration(integration)
-            .then(() => {
-              this.$router.push({ name: 'integrationList' })
-            })
-            .catch(error => {
-              if (error.response.status != 403) {
-                alert(error)
-              }
-            })
+
+        let integration = {
+          kind: 'slack',
+          slack_bot_token: data.access_token,
+          slack_incoming_webhook: data.incoming_webhook.url,
+          slack_channel: data.incoming_webhook.channel,
+          slack_team_name: data.team.name,
         }
+        integrationApi.createIntegration(integration)
+          .then(() => {
+            this.$router.push({ name: 'integrationList' })
+          })
+          .catch(error => {
+            if (error.response.status != 403) {
+              alert(error)
+            }
+          })
       })
       .catch((error) => {
         this.isLoading = false
