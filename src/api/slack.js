@@ -1,24 +1,18 @@
 import axios from 'axios'
-import qs from 'qs'
+import store from '@/store'
+
 
 import {
-  FRONT_URL, SLACK_CLIENT_ID, SLACK_CLIENT_SECRET
+  API_URL, FRONT_URL, SLACK_CLIENT_ID,
 } from '@/config'
 
 
 export const slackApi = {
   async obtainOauthAccess(code) {
-
-    let formData = {
-      client_id: SLACK_CLIENT_ID,
-      client_secret: SLACK_CLIENT_SECRET,
-      code: code,
-      redirect_uri: `${FRONT_URL}/integrations/slack`,
-    }
-    console.log("Requesting oauth token with data", formData)
-    return axios.post('https://slack.com/api/oauth.v2.access', qs.stringify(formData), { headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }})
+    return axios.post(`${API_URL}/integrations/slackOauthAccess`, {}, {
+      headers: { 'Authorization': `Bearer ${store.state.token}` },
+      params: { code },
+    })
   },
 
   helpers: {
