@@ -1,4 +1,4 @@
-FROM node:18.12.1-alpine3.15 as build-stage
+FROM node:19.8.1-alpine3.17 as build-stage
 
 ARG API_URL=http://localhost:8000
 ENV VITE_APP_API_URL=${API_URL}
@@ -20,7 +20,7 @@ COPY . .
 
 RUN npm run build
 
-FROM nginx:1.22.1-alpine as production-stage
+FROM nginx:1.23.4-alpine as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
