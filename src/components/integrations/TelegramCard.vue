@@ -50,10 +50,5 @@ export default {
         })
     }
   }
-//   computed: {
-//     slackAuthorizationUrl() {
-//       return slackApi.helpers.authorizationUrl
-//     }
-//   }
 }
 </script>

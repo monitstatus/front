@@ -12,7 +12,8 @@ import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
         <div class="text-2xl leading-7">{{ error }}</div>
         <router-link
           :to="{name: 'integrationList'}"
-          tag="button" type="button" class="mt-8 inline-flex items-center bg-blue-500 hover:bg-blue-700 px-4 py-2 border border-transparent rounded-md shadow-sm text-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          type="button"
+          class="mt-8 inline-flex items-center bg-blue-500 hover:bg-blue-700 px-4 py-2 border border-transparent rounded-md shadow-sm text-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           Go back to integrations
         </router-link>
       </div>
